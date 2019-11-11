@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NewActivity</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h3>Add New Review for @ViewBag.movie.Title</h3>
+
+            </div>
+            <div class="col-3">
+                <a href="dashboard" class="mr-3">Home</a>
+                <a href="logout">Logout</a>
+            </div>
+
+        </div>
+        <hr class="bg-dark">
+        <br>
+        @model Review
+
+
+        <form asp-action="AddReview" method="post" asp-route-movID="@ViewBag.movie.MovieId">
+            <div class="row">
+                <div class="form-group col-10">
+                    <span class="d-block text-warning" asp-validation-for="Description"></span>
+                    <label for="exampleFormControlTextarea1" asp-for="Description">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        asp-for="Description"></textarea>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <span class="d-block text-warning" asp-validation-for="Rating"></span>
+                        <label for="exampleFormControlSelect1" asp-for="Rating">Rating</label>
+                        <select class="form-control" id="exampleFormControlSelect1" asp-for="Rating">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+
+                        </select>
+                    </div>
+                   
+                </div>
+                
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Add Review</button>
+        </form>
+
+
+    </div>
+    </div>
+</body>
+
+</html>

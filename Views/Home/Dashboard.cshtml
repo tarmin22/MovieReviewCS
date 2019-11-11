@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+</head>
+<style>
+    body {
+        background-color: black;
+        color: wheat;
+    }
+
+    text {
+        color: white;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo1 {
+        width: 200px;
+        height: 200px;
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark top">
+            <img src="~/images/MovieReview.png" class="logo1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Movies</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Comedy</a>
+                            <a class="dropdown-item" href="#">Romance</a>
+                            <a class="dropdown-item" href="#">Horror</a>
+                            <a class="dropdown-item" href="#">Sci-fi</a>
+
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/regLog">Reg/Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/newMovie">Add Movie</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+        @model List<Movie>
+            <div class="row">
+
+                <div class="col-4">
+                    <h5><span class="fas fa-user-check "></span> Welcome @ViewBag.userName</h5>
+                </div>
+                <div class="col-4"></div>
+               
+            </div>
+            <h3 class="text-center">Movie List </h4>
+                <div class="row">
+
+                    <div class="col-12">
+
+                        <table class="table table-striped ">
+                            <thead class="text-white bg-primary">
+                                <tr class="border-0">
+                                    <th scope="col" class="border-0">Title</th>
+                                    <th scope="col" class="border-0">Rating</th>
+                                    <th scope="col" class="border-0">Rating Count</th>
+                                    <th scope="col" class="border-0">Action</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var i in Model)
+                                {
+                                decimal ave = 0;
+                                if (i.MovieReview.Count() != 0)
+                                {
+                                ave = Decimal.Round(i.MovieReview.Sum(r =>r.Rating)/i.MovieReview.Count());
+                                }
+
+
+
+                                <tr class="text-light ">
+                                    <td class="border-0"><a href="showInfo/@i.MovieId">@i.Title</a></td>
+
+                                    <td class="border-0">
+                                        @{
+                                        for(int j=0; j < 5; j++ ) { if(ave !=0) { <span
+                                            class="fa fa-star text-warning fa-spin"></span>
+                                            ave -= 1;
+                                            }
+                                            else
+                                            {
+                                            <span class="fa fa-star "></span>
+                                            }
+                                            }
+                                            }
+                                    </td>
+                                    <td class="border-0">@i.MovieReview.Count()</td>
+                                    @if(i.MovieReview.Any(r =>r.UserId == ViewBag.UserId && r.MovieId == i.MovieId))
+                                    {
+                                    <td class="border-0">Reviewed</td>
+                                    }
+                                    else
+                                    {
+                                    <td class="border-0"><a href="newReview/@i.MovieId">Add a Review</a></td>
+                                    }
+
+                                </tr>
+
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+               
+
+    </div>
+</body>
+
+</html>

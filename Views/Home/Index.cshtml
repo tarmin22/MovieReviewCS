@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Index</title>
+
+<head>
+    <style>
+        * {
+            outline: 2px red;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        #myVideo1 {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #myVideo2 {
+            position: absolute;
+            left: 370px;
+            bottom: 0;
+
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #myVideo3 {
+            position: absolute;
+            left: 706px;
+            bottom: 0;
+
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .content {
+            position: relative;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #f1f1f1;
+            width: 100%;
+            padding: 20px;
+        }
+
+        #myBtn {
+            width: 200px;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #myBtn:hover {
+            background: #ddd;
+            color: black;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo1 {
+            width: 200px;
+            height: 200px;
+
+        }
+
+
+
+
+        .top {
+            background-color: black;
+        }
+
+        .glow {
+            font-size: 80px;
+            color: #fff;
+            text-align: center;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+            animation: glow 1s ease-in-out infinite alternate;
+        }
+
+        @@keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+        /* 
+        .h11 {
+
+            text-shadow: 1px 1px 2px white, 0 0 25px grey, 0 0 5px rgb(15, 15, 15);
+
+        } */
+
+        .h11 {
+
+            /* text-shadow: 2px 2px 20px white, 0 0 25px rgb(128, 128, 128), 0 0 5px rgb(127, 19, 155); */
+            font-family: 'Shrikhand', cursive;
+            color: honeydew;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container ">
+        <!-- <div class="col-12 top">
+            <img src="~/images/MovieReview.png" class="logo1">
+        </div> -->
+        <nav class="navbar navbar-expand-lg navbar-dark top">
+            <img src="~/images/MovieReview.png" class="logo1">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Movies</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Comedy</a>
+                            <a class="dropdown-item" href="#">Romance</a>
+                            <a class="dropdown-item" href="#">Horror</a>
+                            <a class="dropdown-item" href="#">Sci-fi</a>
+
+
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/regLog">Reg/Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="content col-12">
+            <video autoplay muted loop id="myVideo1">
+                <source src="~/videos/ScreenRecorderProject2_1.mp4" type="video/mp4">
+
+
+            </video>
+            <video autoplay muted loop id="myVideo2">
+                <source src="~/videos/ScreenRecorderProject3.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop id="myVideo3">
+                <source src="~/videos/ScreenRecorderProject4.mp4" type="video/mp4">
+            </video>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <script>
+                var video = document.getElementById("myVideo");
+                var btn = document.getElementById("myBtn");
+
+                function myFunction() {
+                    if (video.paused) {
+                        video.play();
+                        btn.innerHTML = "Pause";
+                    } else {
+                        video.pause();
+                        btn.innerHTML = "Play";
+                    }
+                }
+            </script>
+
+        </div>
+        <div class="content1">
+
+            <h1 class="h11 text-center">Write Your Own Reviews</h1>
+            <h2 class="h11 text-center">Let Your Opinion Matter</h2>
+
+
+        </div>
+        <div class="content col-12">
+            <video autoplay muted loop id="myVideo1">
+                <source src="~/videos/ScreenRecorderProject5.mp4" type="video/mp4">
+
+
+            </video>
+            <video autoplay muted loop id="myVideo2">
+                <source src="~/videos/ScreenRecorderProject6.mp4" type="video/mp4">
+            </video>
+            <video autoplay muted loop id="myVideo3">
+                <source src="~/videos/ScreenRecorderProject7.mp4" type="video/mp4">
+            </video>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <script>
+                var video = document.getElementById("myVideo");
+                var btn = document.getElementById("myBtn");
+
+                function myFunction() {
+                    if (video.paused) {
+                        video.play();
+                        btn.innerHTML = "Pause";
+                    } else {
+                        video.pause();
+                        btn.innerHTML = "Play";
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
